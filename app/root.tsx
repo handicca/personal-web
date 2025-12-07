@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import Loading from "./components/loading";
+import NotFound from "./routes/not-found";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -52,28 +53,56 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
-
+  // Jika error berupa Response (throw new Response)
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
+    // 404 → render halaman NotFound langsung
+    if (error.status === 404) {
+      return <NotFound />;
+    }
+
+    // Error response lain (mis. 401, 500, dsb)
+    return (
+      <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+        <h1 className="text-5xl font-bold text-white mb-4">
+          {error.status}
+        </h1>
+
+        <p className="text-gray-400 text-lg mb-6">
+          {error.statusText || "Terjadi kesalahan"}
+        </p>
+
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition"
+        >
+          ← Kembali ke beranda
+        </a>
+      </main>
+    );
   }
 
+  // Jika error dari exception JS (runtime error)
+  const devDetails =
+    import.meta.env.DEV && error instanceof Error ? error.stack : null;
+
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+      <h1 className="text-5xl font-bold text-white mb-4">Error</h1>
+
+      <p className="text-gray-400 text-lg mb-6">
+        Terjadi kesalahan tak terduga
+      </p>
+
+      <a
+        href="/"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition"
+      >
+        ← Kembali ke beranda
+      </a>
+
+      {devDetails && (
+        <pre className="mt-8 w-full max-w-2xl text-left bg-neutral-900/80 p-4 rounded-lg overflow-x-auto text-sm text-gray-300">
+          {devDetails}
         </pre>
       )}
     </main>
