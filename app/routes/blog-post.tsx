@@ -13,6 +13,13 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     throw new Response("Post not found", { status: 404 });
   }
 
+  // periksa content-type — Netlify/redirect SPA sering mengembalikan index.html (text/html)
+  const contentType = res.headers.get("content-type") || "";
+  if (contentType.includes("text/html")) {
+    // server mengembalikan index.html (SPA redirect) => anggap file tidak ada
+    throw new Response("Post not found", { status: 404 });
+  }
+
   const raw = await res.text();
   const parsed = fm(raw);
 
