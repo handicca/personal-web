@@ -19,6 +19,7 @@ export default function BlogPage({ loaderData }: Route.ComponentProps) {
   const { posts } = loaderData as { posts: Post[] };
   return (
     <div>
+      <title>Handicca Blog</title>
       <header className="mb-8">
         <h1 className="text-3xl font-bold">Blog</h1>
         <p className="text-gray-400 mt-2">
