@@ -3,8 +3,8 @@ import { RiGithubFill, RiLinkedinBoxFill, RiTwitterFill } from "react-icons/ri";
 export default function Footer() {
   return (
     <footer className="mt-20 border-t border-white/10 pt-10 text-gray-300">
-      <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="text-center sm:text-left">
           <h2 className="text-xl font-semibold tracking-tight">Handika</h2>
           <p className="text-sm text-gray-400">
             Web Developer • Data Scientist

@@ -18,23 +18,25 @@ type Post = {
 export default function BlogPage({ loaderData }: Route.ComponentProps) {
   const { posts } = loaderData as { posts: Post[] };
   return (
-    <div>
+    <div className="min-w-0">
       <title>Handicca Blog</title>
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold">Blog</h1>
-        <p className="text-gray-400 mt-2">
-          Koleksi tulisan tentang web development, data science, dan catatan
-          teknis.
+      <header className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+          Blog
+        </h1>
+        <p className="text-sm sm:text-base text-gray-400 mt-2">
+          A collection of articles about web development, data science, and
+          technical notes.
         </p>
       </header>
 
       <nav aria-label="Daftar artikel">
-        <ul className="space-y-6">
+        <ul className="divide-y divide-white/10">
           {posts.map((post) => (
-            <li key={post.slug}>
+            <li key={post.slug} className="py-6 sm:py-8 first:pt-0 last:pb-0">
               <article className="group">
                 <header>
-                  <h2 className="text-xl font-semibold">
+                  <h2 className="text-lg sm:text-xl font-semibold">
                     <Link
                       to={`/blog/${post.slug}`}
                       className="text-current hover:text-white underline-offset-4 hover:underline transition-colors"
@@ -57,16 +59,18 @@ export default function BlogPage({ loaderData }: Route.ComponentProps) {
                 </header>
 
                 {post.excerpt && (
-                  <p className="text-gray-300 mt-2">{post.excerpt}</p>
+                  <p className="text-sm sm:text-base text-gray-300 mt-2 leading-relaxed">
+                    {post.excerpt}
+                  </p>
                 )}
 
                 <footer className="mt-3">
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-sm text-gray-300 hover:text-white"
+                    className="inline-flex items-center text-sm text-gray-300 hover:text-white transition-colors"
                     aria-label={`Baca artikel ${post.title}`}
                   >
-                    Baca selengkapnya
+                    Read more
                     <span aria-hidden="true" className="ml-2">
                       →
                     </span>

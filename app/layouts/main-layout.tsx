@@ -9,21 +9,23 @@ export default function MainLayout() {
 
   return (
     <div
-      className={`max-w-3xl mx-auto min-h-screen py-8 flex flex-col relative ${
+      className={`min-h-screen flex flex-col relative ${
         isLoading ? "loading" : ""
       }`}
     >
-      <Navbar />
+      <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex flex-col flex-1">
+        <Navbar />
 
-      <div className="loading-overlay pointer-events-none">
-        <div className="loading-spinner"></div>
+        <div className="loading-overlay pointer-events-none">
+          <div className="loading-spinner"></div>
+        </div>
+
+        <main className="mt-4 sm:mt-6 flex-1">
+          <Outlet />
+        </main>
+
+        <Footer />
       </div>
-
-      <main className="mt-2.5 flex-1">
-        <Outlet />
-      </main>
-
-      <Footer />
     </div>
   );
 }
