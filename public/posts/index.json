@@ -1,5 +1,11 @@
 [
   {
+    "slug": "applied-data-science-explained",
+    "title": "Applied Data Science: From Raw Data to Real Decisions",
+    "date": "2025-02-01",
+    "excerpt": "A beginner-friendly guide to applied data science—what it is, how businesses use it, and how data drives decisions in everyday products."
+  },
+  {
     "slug": "hello-world",
     "title": "Hello World",
     "date": "2025-01-01",
