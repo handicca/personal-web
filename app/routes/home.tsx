@@ -56,7 +56,7 @@ export default function Home() {
         <div className="flex flex-col gap-10 md:flex-row md:items-start">
           <figure className="shrink-0 mx-auto md:mx-0 w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 order-first md:order-2">
             <img
-              className="w-full h-full rounded-full object-cover ring-2 ring-white/10"
+              className="w-full h-full rounded-full object-cover ring-2 ring-theme"
               src="/handicca-circle.png"
               alt="Handika profile picture"
             />
@@ -69,7 +69,7 @@ export default function Home() {
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                        className="inline-flex items-center gap-2 text-theme-muted hover:text-theme-accent transition-colors"
                         title={`${label} — opens in new tab`}
                         aria-label={label}
                       >
@@ -90,7 +90,7 @@ export default function Home() {
               </h1>
             </header>
 
-            <p className="text-base sm:text-lg leading-relaxed text-gray-300">
+            <p className="text-base sm:text-lg leading-relaxed text-theme-muted dark:text-theme-subtle">
               I'm Handika, a web developer and data scientist who enjoys
               building things from both angles: designing efficient systems with
               modern code, and turning raw data into meaningful insights. I work
@@ -98,7 +98,7 @@ export default function Home() {
               analysis tools to create solutions that don't just work—they're
               clear, measurable, and built to scale.
             </p>
-            <p className="text-base sm:text-lg leading-relaxed text-gray-300 mt-4 sm:mt-5">
+            <p className="text-base sm:text-lg leading-relaxed dark:text-theme-subtle text-theme-muted mt-4 sm:mt-5">
               I'm constantly exploring the intersection of software engineering
               and data science, because I believe the best technology emerges
               when the two complement each other. On the web side, I focus on
@@ -120,7 +120,7 @@ export default function Home() {
           >
             What I Do
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-gray-400">
+          <p className="mt-2 text-sm sm:text-base text-theme-muted">
             Areas I focus on and technologies I work with.
           </p>
         </header>
@@ -129,16 +129,16 @@ export default function Home() {
           {portfolioItems.map((item) => (
             <article
               key={item.title}
-              className="p-5 sm:p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/[0.07] transition-colors"
+              className="p-5 sm:p-6 rounded-xl border border-theme bg-theme-subtle hover:bg-theme-muted transition-colors"
             >
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+              <h3 className="text-lg font-semibold mb-2 text-theme">{item.title}</h3>
+              <p className="text-sm sm:text-base text-theme-muted leading-relaxed">
                 {item.description}
               </p>
               <ul className="mt-3 flex flex-wrap gap-2" role="list">
                 {item.tags.map((tag) => (
                   <li key={tag}>
-                    <span className="text-xs px-2 py-1 rounded-md bg-white/10 text-gray-300">
+                    <span className="text-xs px-2 py-1 rounded-md bg-theme-subtle text-theme-subtle">
                       {tag}
                     </span>
                   </li>
@@ -154,11 +154,11 @@ export default function Home() {
         <h2 id="cta-heading" className="sr-only">
           Get in touch
         </h2>
-        <p className="text-base sm:text-lg text-gray-400">
+        <p className="text-base sm:text-lg text-theme-muted">
           Interested in collaborating or just want to chat?{" "}
           <a
             href="/blog"
-            className="text-white font-medium underline underline-offset-4 hover:no-underline transition"
+            className="text-theme-accent font-medium underline underline-offset-4 hover:no-underline transition"
           >
             Read my blog
           </a>{" "}

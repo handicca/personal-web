@@ -9,7 +9,7 @@ export default function MainLayout() {
 
   return (
     <div
-      className={`min-h-screen flex flex-col relative ${
+      className={`min-h-screen flex flex-col relative bg-theme ${
         isLoading ? "loading" : ""
       }`}
     >

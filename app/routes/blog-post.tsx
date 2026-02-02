@@ -60,12 +60,12 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
   const navigate = useNavigate();
 
   return (
-    <article className="prose prose-invert max-w-none min-w-0">
+    <article className="prose dark:prose-invert max-w-none min-w-0">
       <title>Blog | Handicca</title>
       <meta name="description" content={meta?.description || ""} />
       <button
         onClick={() => navigate(-1)}
-        className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+        className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-sm text-theme-muted hover:text-theme-accent transition-colors"
       >
         <span className="text-xl" aria-hidden>←</span> Back to Blog
       </button>
@@ -76,7 +76,7 @@ export default function BlogPost({ loaderData }: Route.ComponentProps) {
         </h1>
       )}
       {meta?.date && (
-        <p className="text-gray-400 text-sm mb-4 sm:mb-6">{meta.date}</p>
+        <p className="text-theme-muted text-sm mb-4 sm:mb-6">{meta.date}</p>
       )}
       <TagList tags={meta.tags} />
 

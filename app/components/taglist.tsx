@@ -12,7 +12,7 @@ export function TagList({ tags }: { tags?: string[] }) {
 
 function Tag({ children }: { children: string }) {
   return (
-    <span className="px-2 py-0.5 text-xs rounded-md bg-white/10 text-gray-200 hover:bg-white/20 transition">
+    <span className="px-2 py-0.5 text-xs rounded-md bg-theme-subtle text-theme-subtle hover:bg-theme-hover transition">
       {children}
     </span>
   );

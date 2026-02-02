@@ -1,9 +1,11 @@
 import { NavLink } from "react-router";
 import { useState } from "react";
 import { RiMenu4Line, RiCloseLine } from "react-icons/ri";
+import ThemeToggle from "./theme-toggle";
 
 const navItems = [
   { to: "/", label: "Home" },
+  { to: "/portfolio", label: "Portfolio" },
   { to: "/blog", label: "Blog" },
 ] as const;
 
@@ -11,7 +13,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `relative block py-2 text-base before:content-[''] before:absolute before:h-0.5 before:bg-white before:-bottom-0.5 before:left-0 before:transition-all before:duration-300 sm:py-0 sm:inline-block sm:before:left-0 sm:before:right-0 ${
+    `relative block py-2 text-base before:content-[''] before:absolute before:h-0.5 before:bg-[var(--color-accent)] before:-bottom-0.5 before:left-0 before:transition-all before:duration-300 sm:py-0 sm:inline-block sm:before:left-0 sm:before:right-0 text-theme ${
       isActive ? "before:w-full font-medium" : "before:w-0 hover:before:w-full"
     }`;
 
@@ -24,26 +26,31 @@ export default function Navbar() {
         <div className="flex items-center justify-between w-full sm:w-auto">
           <a
             href="/"
-            className="text-lg font-semibold tracking-tight hover:opacity-90 transition-opacity"
+            className="text-lg font-semibold tracking-tight hover:opacity-90 transition-opacity text-theme"
           >
             Handika
           </a>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 -mr-2 sm:hidden rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
-            aria-expanded={menuOpen}
-            aria-controls="main-nav-menu"
-          >
-            <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
-            {menuOpen ? <RiCloseLine size={24} /> : <RiMenu4Line size={24} />}
-          </button>
+          <div className="flex items-center gap-1 sm:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="p-2 -mr-2 rounded-lg text-theme-muted hover:text-theme-accent hover:bg-theme-subtle transition-colors"
+              aria-expanded={menuOpen}
+              aria-controls="main-nav-menu"
+            >
+              <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+              {menuOpen ? <RiCloseLine size={24} /> : <RiMenu4Line size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Desktop nav */}
-        <ul className="hidden sm:flex sm:items-center sm:gap-8 sm:text-base">
+        <ul className="hidden sm:flex sm:items-center sm:gap-4 sm:text-base">
+          <li>
+            <ThemeToggle />
+          </li>
           {navItems.map(({ to, label }) => (
             <li key={to}>
               <NavLink className={linkClass} to={to} onClick={() => setMenuOpen(false)}>
@@ -64,7 +71,7 @@ export default function Navbar() {
       >
         {/* Backdrop */}
         <div
-          className={`absolute inset-0 bg-gray-950/80 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-overlay-backdrop backdrop-blur-sm transition-opacity duration-300 ${
             menuOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={() => setMenuOpen(false)}
@@ -72,7 +79,7 @@ export default function Navbar() {
 
         {/* Slide-in panel */}
         <div
-          className={`absolute top-0 right-0 w-full max-w-xs h-full bg-gray-950 border-l border-white/10 shadow-xl transition-transform duration-300 ease-out ${
+          className={`absolute top-0 right-0 w-full max-w-xs h-full bg-theme border-l border-theme shadow-xl transition-transform duration-300 ease-out ${
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >

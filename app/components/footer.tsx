@@ -2,11 +2,11 @@ import { RiGithubFill, RiLinkedinBoxFill, RiTwitterFill } from "react-icons/ri";
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 pt-10 text-gray-300">
+    <footer className="mt-20 border-t border-theme pt-10 text-theme-subtle">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="text-center sm:text-left">
-          <h2 className="text-xl font-semibold tracking-tight">Handika</h2>
-          <p className="text-sm text-gray-400">
+          <h2 className="text-xl font-semibold tracking-tight text-theme">Handika</h2>
+          <p className="text-sm text-theme-muted">
             Web Developer • Data Scientist
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function Footer() {
         </nav>
       </div>
 
-      <div className="mt-8 text-center text-xs text-gray-500">
+      <div className="mt-8 text-center text-xs text-theme-muted">
         © {new Date().getFullYear()} Handika. Crafted with curiosity and clean
         code.
       </div>
